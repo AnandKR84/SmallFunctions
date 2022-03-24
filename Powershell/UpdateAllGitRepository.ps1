@@ -1,0 +1,2 @@
+﻿Set-Location "D:\Source"
+push-location; Get-ChildItem . -Attributes Directory+Hidden -ErrorAction SilentlyContinue -Filter ".git" -Recurse | % { cd $_.parent.fullname; write-host '*************'; $(get-location).path; git fetch; git pull; git submodule update; git status; write-host '*************'; write-host ' '; }; pop-location
