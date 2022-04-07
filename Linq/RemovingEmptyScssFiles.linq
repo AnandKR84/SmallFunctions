@@ -2,13 +2,15 @@
 
 void Main()
 {
-	var files = Directory.GetFiles(@"D:\Source\V4%20App", "*.scss", SearchOption.AllDirectories);
+	var files = Directory.GetFiles(@"D:\Source\V4\V4%20App\", "*.scss", SearchOption.AllDirectories);
 	IList<string> emptyFiles = new List<string>();
+	Regex comments = new Regex(@"/\*(.|\n)*?\*/");
 	
-	//Get all empty files
+	//Get all empty files or files with only comments
 	foreach(string file in files)
 	{
-		var str = File.ReadAllText(file).Trim();
+		var str = comments.Replace(File.ReadAllText(file), "");
+		str = str.Trim();
 		if(string.IsNullOrEmpty(str))
 		{
 			emptyFiles.Add(file);
