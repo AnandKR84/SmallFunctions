@@ -1,0 +1,2 @@
+﻿Set-Location "D:\Source\Patient Log"
+push-location; Get-ChildItem . -Attributes Directory+Hidden -ErrorAction SilentlyContinue -Filter ".git" -Recurse | % { cd $_.parent.fullname; write-host '*************'; $(get-location).path; git status -s; git add -A; git commit -m "meta upgrade"; git branch users/Anand/MetaUpgrade dev; git checkout users/Anand/MetaUpgrade; git push --set-upstream origin users/Anand/MetaUpgrade; write-host '*************'; write-host ' '; }; pop-location
