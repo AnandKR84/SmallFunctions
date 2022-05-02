@@ -1,8 +1,8 @@
 ﻿# Clone all projects within a azure devops team name. This works only if there is access provided.
 
-$accessToken = "csofej6ly322jog2zf35zav3vgygr2vxmo5crtzlv37hvgs2jwua"
+$accessToken = "7j7tz5g5egzitvlthdikhg3kqww6hgh755rjy54ytnhvkizbpckq"
 $teamName = "exxat-team"
-$projects = @('Evaluation', 'PatientLog', 'Platform', 'V4')
+$projects = @('Framework')
 
 $base64AuthInfo= [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$accessToken"))
 $headers = @{Authorization=("Basic {0}" -f $base64AuthInfo)}
