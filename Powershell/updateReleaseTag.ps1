@@ -1,0 +1,2 @@
+Set-Location "D:\Source\Platform"
+push-location; Get-ChildItem . -Attributes Directory+Hidden -ErrorAction SilentlyContinue -Filter ".git" -Recurse | % { cd $_.parent.fullname; write-host '*************'; $(get-location).path; git status -s; git add -A; git commit -m "Committing pending work"; git push; git checkout dev; git fetch; git pull; git checkout release/r22; git tag RELEASE_R22 -a -m "Released commit for R22"; git push origin RELEASE_R22; git submodule update; git status; write-host '*************'; write-host ' '; }; pop-location

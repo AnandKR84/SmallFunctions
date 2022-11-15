@@ -1,11 +1,11 @@
 ﻿# Clone all projects within a azure devops team name. This works only if there is access provided.
 
-$accessToken = "7j7tz5g5egzitvlthdikhg3kqww6hgh755rjy54ytnhvkizbpckq"
+$accessToken = "2devthh3wlqsdhgdwxsvdodydidcje2fopqrjzxizvjim4g2nusa"
 $teamName = "exxat-team"
-$projects = @('Framework')
+$projects = @('PLAN')
 
-$base64AuthInfo= [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$accessToken"))
-$headers = @{Authorization=("Basic {0}" -f $base64AuthInfo)}
+$base64AuthInfo = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$accessToken"))
+$headers = @{Authorization = ("Basic {0}" -f $base64AuthInfo) }
 
 $result = Invoke-RestMethod -Uri "https://dev.azure.com/$teamName/_apis/projects?api-version=6.0" -Method Get -Headers $headers
 
